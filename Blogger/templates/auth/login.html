@@ -1,0 +1,31 @@
+{% extends 'layout/app.html' %}
+{% from 'macros/form.html' import render_field %}
+
+{% block content %}
+    <div class="hero">
+        <div class="hero-body">
+            <div class="container ">
+                <div class="columns is-centered">
+                    <div class="column is-half is-mobile is-desktop">
+                        <div class="card ">
+                            <div class="card-content">
+                                <div class="content">
+                                    {% include 'macros/flash_message.html' %}
+                                    <form action="{{ url_for('auth_app.login') }}" method="post" autocomplete="off">
+                                        {{ form.hidden_tag() }}
+
+                                        {{ render_field(form.email, class="input", placeholder="johndoe@example.com") }}
+                                        {{ render_field(form.password, class="input", placeholder="Password") }}
+
+                                        {{ form.submit(class="button is-primary") }}
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

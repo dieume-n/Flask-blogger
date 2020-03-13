@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+</head>
+<body>
+<nav class="navbar is-fixed-top is-black" role="navigation" aria-label="main navigation">
+    <div class="container">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="/">
+                <h1 class="is-1">Blogger</h1>
+            </a>
+
+            <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+               data-target="navbarBasicExample">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
+
+        <div id="navbarBasicExample" class="navbar-menu">
+            <div class="navbar-start">
+
+            </div>
+
+            <div class="navbar-end">
+                {% if not current_user.is_authenticated %}
+                    <div class="navbar-item">
+                        <a class="button is-white is-inverted">
+                            About
+                        </a>
+                        <div class="buttons">
+                            <a class="button is-white is-inverted" href="{{ url_for('auth_app.login') }}">
+                                Log in
+                            </a>
+                            <a class="button is-primary is-rounded" href="{{ url_for('auth_app.register') }}">
+                                <strong>Sign up</strong>
+                            </a>
+
+                        </div>
+                    </div>
+                {% else %}
+                    <div class="navbar-item">
+                        <div>
+                            <a class="has-text-white" href="{{ url_for('auth_app.logout') }}">
+                                Logout
+                            </a>
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</nav>
+
+{% block content %} {% endblock %}
+
+
+</body>
+</html>

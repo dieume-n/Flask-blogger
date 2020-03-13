@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hello Bulma!</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+</head>
+<body>
+<nav class="navbar is-fixed-top is-black">
+    <div class="navbar-brand">
+        <a class="navbar-item" href="/">
+            <h1 class="is-1">Blogger</h1>
+        </a>
+
+        <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+           data-target="navbarBasicExample">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+    </div>
+    <div id="navbarBasicExample" class="navbar-menu">
+        <div class="navbar-start">
+
+        </div>
+
+        <div class="navbar-end">
+            {% if not current_user.is_authenticated %}
+                <div class="navbar-item">
+                    <a class="button is-white is-inverted">
+                        About
+                    </a>
+                    <div class="buttons">
+                        <a class="button is-white is-inverted" href="{{ url_for('auth_app.login') }}">
+                            Log in
+                        </a>
+                        <a class="button is-primary is-rounded" href="{{ url_for('auth_app.register') }}">
+                            <strong>Sign up</strong>
+                        </a>
+
+                    </div>
+                </div>
+            {% else %}
+                <div class="navbar-item">
+                    <div>
+                        <a class="has-text-white" href="{{ url_for('auth_app.logout') }}">
+                            Logout
+                        </a>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</nav>
+
+<div class="columns is-variable is-0">
+    <div>
+        <div class="menu-container px-1 has-background-white">
+            <div class="menu-wrapper">
+                <aside>
+                    <p class="menu-label">
+                        General
+                    </p>
+                    <ul class="menu-list">
+                        <li><a> <i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                        <li><a>Customers</a></li>
+                    </ul>
+                    <p class="menu-label">
+                        Administration
+                    </p>
+                    <ul class="menu-list">
+                        <li><a>Team Settings</a></li>
+                        <li>
+                            <a class="is-active">Manage Your Team</a>
+                            <ul>
+                                <li><a>Members</a></li>
+                                <li><a>Plugins</a></li>
+                                <li><a>Add a member</a></li>
+                            </ul>
+                        </li>
+                        <li><a>Invitations</a></li>
+                        <li><a>Cloud Storage Environment Settings</a></li>
+                        <li><a>Authentication</a></li>
+                    </ul>
+                    <p class="menu-label">
+                        Transactions
+                    </p>
+                    <ul class="menu-list">
+                        <li><a>Payments</a></li>
+                        <li><a>Transfers</a></li>
+                        <li><a>Balance</a></li>
+                    </ul>
+                </aside>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>

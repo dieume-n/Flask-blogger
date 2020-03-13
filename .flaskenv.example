@@ -1,0 +1,10 @@
+APP_NAME = app name
+FLASK_APP =  your entrypoint .py file
+Flask_ENV = Development
+FLASK_DEBUG = 1
+SECRET_KEY = your secret key
+DB_HOST = 127.0.0.1
+DB_USERNAME = root
+DB_PASSWORD = password
+DB_DATABASE = database_name
+IMAGE_PATH = image path
